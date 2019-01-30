@@ -14,11 +14,12 @@ export const FETCH_CHAR_SUCCESS = 'FETCH_CHAR_SUCCESS'
 export const FETCH_CHAR_FAILURE = 'FETCH_CHAR_FAILURE'
 
 export const getChar = () => dispatch => {
-    dispatch({ type: FETCH_PHOTO_START });
+    dispatch({ type: FETCH_CHAR_START });
     axios
         .get(
             'https://swapi.co/api/people/'
         )
-        .then(res => dispatch({ type: FETCH_CHAR_SUCCESS, payload: res.data }))
+        .then(res => dispatch({ type: FETCH_CHAR_SUCCESS, 
+            payload: res.data.results }))
         .catch(err => dispatch({ type: FETCH_CHAR_FAILURE, payload: err }))
 }
